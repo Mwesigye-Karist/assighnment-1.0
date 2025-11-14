@@ -1,0 +1,114 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Cost Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            width: 350px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        #total {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Shop Cost Calculator</h2>
+
+    <label>Bread (3,000 UGX each):</label>
+    <input type="number" id="bread" placeholder="Enter quantity">
+
+    <label>Milk (2,500 UGX each):</label>
+    <input type="number" id="milk" placeholder="Enter quantity">
+
+    <label>Eggs (500 UGX each):</label>
+    <input type="number" id="eggs" placeholder="Enter quantity">
+
+    <button onclick="calculateTotal()">Calculate Total</button>
+
+    <div id="total"></div>
+</div>
+
+<script>
+    function calculateTotal() {
+        // Get quantities entered
+        let breadQty = document.getElementById("bread").value;
+        let milkQty = document.getElementById("milk").value;
+        let eggsQty = document.getElementById("eggs").value;
+
+        // Convert empty inputs to 0
+        breadQty = Number(breadQty) || 0;
+        milkQty = Number(milkQty) || 0;
+        eggsQty = Number(eggsQty) || 0;
+
+        // Prices
+        const breadPrice = 3000;
+        const milkPrice = 2500;
+        const eggPrice = 500;
+
+        // Total Calculation
+        let total = (breadQty * breadPrice) +
+                    (milkQty * milkPrice) +
+                    (eggsQty * eggPrice);
+
+        // Display result
+        document.getElementById("total").innerHTML =
+            "Total Amount Payable: " + total.toLocaleString() + " UGX";
+    }
+</script>
+
+</body>
+</html>
